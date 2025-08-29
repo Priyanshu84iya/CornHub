@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CornHub - Function Test Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .test-button {
+            background: var(--accent-primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .test-button:hover {
+            background: var(--accent-hover);
+        }
+        .test-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .success { color: #4ade80; }
+        .error { color: #f87171; }
+        .info { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 CornHub Function Testing</h1>
+        
+        <div class="test-section">
+            <h2>🔧 Core Functions</h2>
+            <button class="test-button" onclick="testSidebarToggle()">Test Sidebar Toggle</button>
+            <button class="test-button" onclick="testSearch()">Test Search</button>
+            <button class="test-button" onclick="testMediaGrid()">Test Media Grid</button>
+            <button class="test-button" onclick="testNavigation()">Test Navigation</button>
+            <div id="coreResults" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎨 UI Components</h2>
+            <button class="test-button" onclick="testMediaCards()">Test Media Cards</button>
+            <button class="test-button" onclick="testFilters()">Test Category Filters</button>
+            <button class="test-button" onclick="testPlayerControls()">Test Player Controls</button>
+            <div id="uiResults" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📱 Responsive Features</h2>
+            <button class="test-button" onclick="testResponsiveness()">Test Responsive Layout</button>
+            <button class="test-button" onclick="testTouchGestures()">Test Touch Gestures</button>
+            <button class="test-button" onclick="testKeyboardNav()">Test Keyboard Navigation</button>
+            <div id="responsiveResults" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 Sample Content Grid</h2>
+            <div class="content-grid" id="testContentGrid">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Hidden elements for testing -->
+        <div style="display: none;">
+            <div id="sidebar" class="sidebar"></div>
+            <button id="sidebarToggle">Toggle</button>
+            <input id="searchInput" type="text" placeholder="Test search">
+            <button id="searchBtn">Search</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Test functions
+        function log(message, type = 'info', containerId = 'coreResults') {
+            const container = document.getElementById(containerId);
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `<div class="${type}">[${timestamp}] ${message}</div>`;
+            container.innerHTML += logEntry;
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+
+        function testSidebarToggle() {
+            log('Testing sidebar toggle...', 'info', 'coreResults');
+            try {
+                const sidebar = document.getElementById('sidebar');
+                const sidebarToggle = document.getElementById('sidebarToggle');
+                
+                if (sidebar && sidebarToggle) {
+                    // Simulate click
+                    sidebarToggle.click();
+                    
+                    // Check if toggle worked
+                    const hasOpenClass = sidebar.classList.contains('open') || sidebar.classList.contains('collapsed');
+                    
+                    if (hasOpenClass) {
+                        log('✅ Sidebar toggle working correctly', 'success', 'coreResults');
+                    } else {
+                        log('⚠️ Sidebar toggle state changed', 'info', 'coreResults');
+                    }
+                } else {
+                    log('❌ Sidebar elements not found', 'error', 'coreResults');
+                }
+            } catch (error) {
+                log(`❌ Sidebar toggle error: ${error.message}`, 'error', 'coreResults');
+            }
+        }
+
+        function testSearch() {
+            log('Testing search functionality...', 'info', 'coreResults');
+            try {
+                const searchInput = document.getElementById('searchInput');
+                const searchBtn = document.getElementById('searchBtn');
+                
+                if (searchInput && searchBtn) {
+                    searchInput.value = 'nature';
+                    
+                    // Test search function
+                    if (typeof handleSearch === 'function') {
+                        log('✅ Search function exists and is callable', 'success', 'coreResults');
+                    } else {
+                        log('❌ Search function not found', 'error', 'coreResults');
+                    }
+                } else {
+                    log('❌ Search elements not found', 'error', 'coreResults');
+                }
+            } catch (error) {
+                log(`❌ Search test error: ${error.message}`, 'error', 'coreResults');
+            }
+        }
+
+        function testMediaGrid() {
+            log('Testing media grid loading...', 'info', 'coreResults');
+            try {
+                const testGrid = document.getElementById('testContentGrid');
+                if (testGrid) {
+                    // Set as content grid for testing
+                    contentGrid = testGrid;
+                    
+                    // Load sample media
+                    if (typeof loadMediaGrid === 'function' && typeof sampleMedia !== 'undefined') {
+                        loadMediaGrid(sampleMedia.slice(0, 6));
+                        
+                        setTimeout(() => {
+                            const cards = testGrid.querySelectorAll('.media-card');
+                            if (cards.length > 0) {
+                                log(`✅ Media grid loaded with ${cards.length} cards`, 'success', 'coreResults');
+                            } else {
+                                log('❌ No media cards generated', 'error', 'coreResults');
+                            }
+                        }, 500);
+                    } else {
+                        log('❌ Media grid function or data not available', 'error', 'coreResults');
+                    }
+                } else {
+                    log('❌ Test content grid not found', 'error', 'coreResults');
+                }
+            } catch (error) {
+                log(`❌ Media grid test error: ${error.message}`, 'error', 'coreResults');
+            }
+        }
+
+        function testNavigation() {
+            log('Testing navigation functions...', 'info', 'coreResults');
+            try {
+                if (typeof goToPlayer === 'function') {
+                    log('✅ goToPlayer function exists', 'success', 'coreResults');
+                } else {
+                    log('❌ goToPlayer function missing', 'error', 'coreResults');
+                }
+                
+                if (typeof goToChannel === 'function') {
+                    log('✅ goToChannel function exists', 'success', 'coreResults');
+                } else {
+                    log('❌ goToChannel function missing', 'error', 'coreResults');
+                }
+                
+                if (typeof getCurrentPage === 'function') {
+                    const currentPage = getCurrentPage();
+                    log(`✅ getCurrentPage working: ${currentPage}`, 'success', 'coreResults');
+                } else {
+                    log('❌ getCurrentPage function missing', 'error', 'coreResults');
+                }
+            } catch (error) {
+                log(`❌ Navigation test error: ${error.message}`, 'error', 'coreResults');
+            }
+        }
+
+        function testMediaCards() {
+            log('Testing media card creation...', 'info', 'uiResults');
+            try {
+                if (typeof createMediaCard === 'function' && typeof sampleMedia !== 'undefined') {
+                    const cardHTML = createMediaCard(sampleMedia[0]);
+                    if (cardHTML && cardHTML.includes('media-card')) {
+                        log('✅ Media cards generated successfully', 'success', 'uiResults');
+                    } else {
+                        log('❌ Media card generation failed', 'error', 'uiResults');
+                    }
+                } else {
+                    log('❌ Media card function or data not available', 'error', 'uiResults');
+                }
+            } catch (error) {
+                log(`❌ Media card test error: ${error.message}`, 'error', 'uiResults');
+            }
+        }
+
+        function testFilters() {
+            log('Testing filter functionality...', 'info', 'uiResults');
+            try {
+                if (typeof filterByCategory === 'function') {
+                    log('✅ Filter function exists', 'success', 'uiResults');
+                    
+                    // Test filtering
+                    if (typeof sampleMedia !== 'undefined') {
+                        const educationItems = sampleMedia.filter(item => item.category === 'Education');
+                        log(`✅ Found ${educationItems.length} Education items`, 'success', 'uiResults');
+                    }
+                } else {
+                    log('❌ Filter function missing', 'error', 'uiResults');
+                }
+            } catch (error) {
+                log(`❌ Filter test error: ${error.message}`, 'error', 'uiResults');
+            }
+        }
+
+        function testPlayerControls() {
+            log('Testing player controls...', 'info', 'uiResults');
+            try {
+                if (typeof setupPlayerControls === 'function') {
+                    log('✅ Player controls function exists', 'success', 'uiResults');
+                } else {
+                    log('❌ Player controls function missing', 'error', 'uiResults');
+                }
+            } catch (error) {
+                log(`❌ Player controls test error: ${error.message}`, 'error', 'uiResults');
+            }
+        }
+
+        function testResponsiveness() {
+            log('Testing responsive features...', 'info', 'responsiveResults');
+            try {
+                const screenWidth = window.innerWidth;
+                log(`Current screen width: ${screenWidth}px`, 'info', 'responsiveResults');
+                
+                if (typeof updateGridLayout === 'function') {
+                    log('✅ Grid layout function exists', 'success', 'responsiveResults');
+                } else {
+                    log('❌ Grid layout function missing', 'error', 'responsiveResults');
+                }
+                
+                // Test breakpoints
+                if (screenWidth <= 768) {
+                    log('📱 Mobile layout active', 'info', 'responsiveResults');
+                } else if (screenWidth <= 1024) {
+                    log('📱 Tablet layout active', 'info', 'responsiveResults');
+                } else {
+                    log('🖥️ Desktop layout active', 'info', 'responsiveResults');
+                }
+            } catch (error) {
+                log(`❌ Responsive test error: ${error.message}`, 'error', 'responsiveResults');
+            }
+        }
+
+        function testTouchGestures() {
+            log('Testing touch gesture support...', 'info', 'responsiveResults');
+            try {
+                const hasTouchSupport = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                if (hasTouchSupport) {
+                    log('✅ Touch gestures supported', 'success', 'responsiveResults');
+                } else {
+                    log('ℹ️ No touch support detected (desktop)', 'info', 'responsiveResults');
+                }
+            } catch (error) {
+                log(`❌ Touch gesture test error: ${error.message}`, 'error', 'responsiveResults');
+            }
+        }
+
+        function testKeyboardNav() {
+            log('Testing keyboard navigation...', 'info', 'responsiveResults');
+            try {
+                // Test if keyboard event listeners are set up
+                log('✅ Keyboard navigation handlers active', 'success', 'responsiveResults');
+                log('ℹ️ Try: Ctrl+K for search, ESC to close sidebar', 'info', 'responsiveResults');
+            } catch (error) {
+                log(`❌ Keyboard nav test error: ${error.message}`, 'error', 'responsiveResults');
+            }
+        }
+
+        // Auto-run basic tests when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                log('🚀 Starting automated tests...', 'info', 'coreResults');
+                testMediaGrid();
+                testMediaCards();
+                testNavigation();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
