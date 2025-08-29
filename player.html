@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Nature Documentary - CornHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="CornHub">
+                    <span>CornHub</span>
+                </a>
+            </div>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <input type="text" placeholder="Search for content..." class="search-input" id="searchInput">
+                    <button class="search-btn" id="searchBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21.71 20.29l-5.4-5.4a9 9 0 1 0-1.42 1.42l5.4 5.4a1 1 0 0 0 1.42-1.42zM11 18a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <button class="upload-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    Upload
+                </button>
+                <button class="notification-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="profile-avatar">
+                    <img src="https://via.placeholder.com/32x32/FF7A00/FFFFFF?text=U" alt="Profile">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    </svg>
+                    Home
+                </a>
+                <a href="trending.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 6l-6 4V7H9v2l-4-2 4-2V7h8V4l6 2z"/>
+                    </svg>
+                    Trending
+                </a>
+                <a href="categories.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                    </svg>
+                    Categories
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                    </svg>
+                    Library
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content player-page">
+            <div class="player-container">
+                <!-- Video Player -->
+                <div class="video-player">
+                    <div class="video-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <p>Video Player Placeholder</p>
+                    </div>
+                    <div class="player-controls">
+                        <button class="play-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="time">12:45 / 45:32</span>
+                        <button class="volume-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                            </svg>
+                        </button>
+                        <button class="fullscreen-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Info -->
+                <div class="video-info">
+                    <h1 class="video-title">Amazing Nature Documentary: Secrets of the Forest</h1>
+                    <div class="video-stats">
+                        <span class="views">2,347,891 views</span>
+                        <span class="date">• 3 days ago</span>
+                    </div>
+                    
+                    <div class="video-actions">
+                        <button class="action-btn liked">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                            </svg>
+                            12.5K
+                        </button>
+                        <button class="action-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/>
+                            </svg>
+                            1.2K
+                        </button>
+                        <button class="action-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/>
+                            </svg>
+                            Share
+                        </button>
+                        <button class="action-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 14c-1.49 0-2.84-.54-3.95-1.41L9.76 15.4c.08.3.24.58.24.9 0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4c.32 0 .6.16.9.24l5.29-2.81C11.54 8.84 12 7.49 12 6c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-.32 0-.6-.16-.9-.24l-5.29 2.81c.64.9 1.14 1.94 1.14 3.18 0 .32-.08.6-.16.9l5.4 2.85c.3-.08.58-.16.9-.16 2.21 0 4 1.79 4 4s-1.79 4-4 4z"/>
+                            </svg>
+                            Save
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Channel Info -->
+                <div class="channel-info">
+                    <div class="channel-details">
+                        <img src="https://via.placeholder.com/48x48/FF7A00/FFFFFF?text=NC" alt="Nature Channel" class="channel-avatar">
+                        <div class="channel-text">
+                            <h3 class="channel-name">Nature Channel</h3>
+                            <p class="channel-subs">1.2M subscribers</p>
+                        </div>
+                    </div>
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+
+                <!-- Video Description -->
+                <div class="video-description">
+                    <p>Explore the hidden wonders of the forest in this breathtaking nature documentary. Discover amazing wildlife, stunning landscapes, and the intricate ecosystems that make our forests so special.</p>
+                    <button class="show-more">Show more</button>
+                </div>
+            </div>
+
+            <!-- Related Videos Sidebar -->
+            <div class="related-videos">
+                <h3>Related Videos</h3>
+                <div class="related-grid" id="relatedGrid">
+                    <!-- Related videos will be generated by JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#about">About</a>
+                <a href="#careers">Careers</a>
+                <a href="#press">Press</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="#help">Help Center</a>
+                <a href="#contact">Contact</a>
+                <a href="#safety">Safety</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#terms">Terms of Service</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#community">Community Guidelines</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#twitter">Twitter</a>
+                <a href="#facebook">Facebook</a>
+                <a href="#instagram">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CornHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
